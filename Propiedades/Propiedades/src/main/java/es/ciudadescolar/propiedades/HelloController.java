@@ -1,5 +1,6 @@
 package es.ciudadescolar.propiedades;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 
 public class HelloController {
 
+    private static final int PASSWORD_MIN_LENGTH = 5;
     @FXML
     public TextField password;
     @FXML
@@ -21,31 +23,46 @@ public class HelloController {
 
     private final StringProperty _retype;
 
-    private final BooleanProperty _disable;
+    private final BooleanProperty _disabled;
 
     public HelloController(){
 
         _password = new SimpleStringProperty();
         _retype = new SimpleStringProperty();
-        _disable = new SimpleBooleanProperty(true);
+        _disabled = new SimpleBooleanProperty(true);
 
     }
 
-    public void initialize(){
-        password.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                System.out.printf("password changed from %s to %s%n", oldValue, newValue);
-                setDisable(mustDisable());
-            }
-        });
-        retype.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                System.out.printf("retype changed from %s to %s%n", oldValue, newValue);
-                setDisable(mustDisable());
-            }
-        });
+    public void initialize() {
+        /* usando la API fluida */
+        _disabled.bind(
+                password.textProperty().isEmpty()
+                        .or(password.textProperty().length().lessThan(PASSWORD_MIN_LENGTH))
+                        .or(retype.textProperty().isNotEqualTo(password.textProperty())));
+
+        /*Otra forma de hacerlo, sin usar API fluida*/
+//        _disabled.bind(Bindings.createBooleanBinding(() -> {
+//                    String p = password.getText();
+//                    String r = retype.getText();
+//                    return p == null || p.isBlank() || p.length() < PASSWORD_MIN_LENGTH || !r.equals(p);
+//                },
+//                password.textProperty(), retype.textProperty()));
+
+        /*Añade esto a la cadena de bindings si quieres impedir contraseñas que comiencen por "a"*/
+//        Bindings.createBooleanBinding(() -> password.getText().startsWith("a"),
+//                password.textProperty());
+
+        /* Otra forma de hacerlo, extendiendo BooleanBinding */
+//        BooleanBinding passwordStartsWithA = new BooleanBinding() {
+//            {
+//                super.bind(password.textProperty());
+//            }
+//
+//            @Override
+//            protected boolean computeValue() {
+//                return password.getText().startsWith("a");
+//            }
+//        };
     }
 
     private boolean mustDisable(){
