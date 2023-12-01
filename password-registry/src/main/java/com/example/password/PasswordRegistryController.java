@@ -22,7 +22,8 @@ public class PasswordRegistryController {
     public TextField retype;
 
     private final UsersPasswordData usersData;
-    private static final String usersDataFilename = "UsersDataStorageFile";
+
+    private final String usersDataFilename = "UsersDataStorageFile";
 
     public PasswordRegistryController() {
         _disabled = new SimpleBooleanProperty(true);

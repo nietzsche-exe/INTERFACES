@@ -1,0 +1,33 @@
+VBox {
+    -fx-alignment: center;
+    -fx-spacing: 20;
+}
+
+Text {
+    -fx-stroke-type: outside;
+    -fx-stroke-width: 0;
+    -fx-font-size: 18px; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+
+GridPane {
+    -fx-pref-height: 125;
+    -fx-pref-width: 214;
+}
+
+.text, .textfield {
+    -fx-pref-height: 26;
+    -fx-pref-width: 123;
+}
+
+Button {
+    -fx-pref-width: 100;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+
+Button:disabled {
+    -fx-background-color: #cccccc;
+    -fx-text-fill: #666666;
+}
