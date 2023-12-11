@@ -3,6 +3,7 @@ VBox {
     -fx-spacing: 20;
 }
 
+
 Text {
     -fx-stroke-type: outside;
     -fx-stroke-width: 0;

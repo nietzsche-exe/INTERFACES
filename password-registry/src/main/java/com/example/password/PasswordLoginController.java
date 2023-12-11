@@ -2,6 +2,7 @@ package com.example.password;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 import java.security.MessageDigest;
 
@@ -16,15 +17,16 @@ public class PasswordLoginController {
 
     public PasswordLoginController() {
         this.usersData = new UsersPasswordData();
-        this.usersData.initPasswordData("UsersDataStorageFile");
+        this.usersData.initPasswordData("UsersDataStorageFile", true);
     }
+
 
     @FXML
     private void userPasswordLogin() {
         String enteredUsername = username.getText();
         String enteredPassword = password.getText();
 
-        for (int i = 0; i < usersData.usersQuantity; i++) {
+        for (int i = 0; i < usersData.getUsersQuantity(); i++) {
             if (enteredUsername.equals(usersData.usersPasswordsArray[i][0])) {
                 try {
                     MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -50,8 +52,10 @@ public class PasswordLoginController {
 
                 }
             }
+            else {
+                System.out.println("El usuario o la contraseña son incorrectos");
+            }
         }
-        System.out.println("El usuario o la contraseña son incorrectos");
     }
 
 }

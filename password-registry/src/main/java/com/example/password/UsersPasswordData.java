@@ -7,20 +7,28 @@ public class UsersPasswordData implements Serializable {
 
     public static final int MAX_USERS_QUANTITY = 10;
     public String[][] usersPasswordsArray;
-    public int usersQuantity;
+    private int usersQuantity;
     public String dataFilename;
 
 
-    public void initPasswordData(String filename) {
+    public void initPasswordData(String filename, boolean loadFromFile) {
+
 
         dataFilename = filename;
         /**
          this.usersPasswordsArray = new String[MAX_USERS_QUANTITY][2];
          this.usersQuantity = 0;
          **/
-        UsersPasswordData data = this.deserializeData(dataFilename);
-        this.usersPasswordsArray = data.usersPasswordsArray;
-        this. usersQuantity = data.usersQuantity;
+        if(loadFromFile) {
+            UsersPasswordData data = this.deserializeData(dataFilename);
+            this.usersPasswordsArray = data.usersPasswordsArray;
+            this. usersQuantity = data.usersQuantity;
+        }
+        else {
+            this.usersPasswordsArray = new String[MAX_USERS_QUANTITY][2];
+            this.usersQuantity = 0;
+        }
+
     }
 
     public boolean addUserPasswordsData(String username, String password) {
@@ -103,5 +111,19 @@ public class UsersPasswordData implements Serializable {
             return dataEmpty;
         }
     }
+
+    public int getUsersQuantity() {
+        return usersQuantity;
+    }
+
+    public String getUser(int index) {
+        return usersPasswordsArray[index][0];
+    }
+
+    public String getContra(int index) {
+        return usersPasswordsArray[index][1];
+    }
+
+
 
 }

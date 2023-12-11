@@ -12,7 +12,7 @@ public class PasswordRegistryApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PasswordRegistryApplication.class.getResource("password-registry-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 350, 400);
         stage.setTitle("SECPLUS Password Registry");
         stage.setScene(scene);
         stage.show();

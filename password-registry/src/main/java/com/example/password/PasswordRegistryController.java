@@ -28,7 +28,7 @@ public class PasswordRegistryController {
     public PasswordRegistryController() {
         _disabled = new SimpleBooleanProperty(true);
         usersData = new UsersPasswordData();
-        usersData.initPasswordData(usersDataFilename);
+        usersData.initPasswordData(usersDataFilename, true);
     }
 
     public void initialize() {

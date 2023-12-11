@@ -3,6 +3,10 @@ VBox {
     -fx-spacing: 20;
 }
 
+ImageView {
+    -fx-pref-height: 100;
+    -fx-pref-width: 100;
+}
 
 Text {
     -fx-stroke-type: outside;
