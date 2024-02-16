@@ -120,7 +120,7 @@ public class UsersPasswordData implements Serializable {
         return usersPasswordsArray[index][0];
     }
 
-    public String getContra(int index) {
+    public String getPassword(int index) {
         return usersPasswordsArray[index][1];
     }
 

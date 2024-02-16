@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: informes.libreria.Main
+Class-Path: commons-collections4-4.4.jar commons-collections4-4.4.jar jc
+ ommon-1.0.24.jar commons-digester-2.1.jar commons-logging-1.3.0.jar jas
+ perreports-6.20.6.jar jfreechart-1.0.19.jar commons-beanutils-1.9.4.jar
+

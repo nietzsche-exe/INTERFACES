@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Testscases {
 
     private static String filename = "TEST_UsersDataStorageFile";
-    private static String rightUsername = "Pablo";
-    private static String rightPassword = "12345";
+    private static String rightUsername = "Walter White";
+    private static String rightPassword = "c10h15n";
     @Test
     @DisplayName("Prueba de ejemplo")
     public void testPrueba() {
@@ -48,7 +48,7 @@ public class Testscases {
         usersData2.initPasswordData(filename, true);
 
         String user = usersData.getUser(0);
-        String password = usersData.getContra(0);
+        String password = usersData.getPassword(0);
 
         String rightPasswordHash;
         try {
@@ -67,8 +67,9 @@ public class Testscases {
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-        assertEquals(rightUsername, user);
         assertEquals(rightPasswordHash, password);
+        assertEquals(rightUsername, user);
+
     }
 
 }
