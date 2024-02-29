@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="informeHotel">
+    <output-path>$PROJECT_DIR$/out/artifacts/informeHotel</output-path>
+    <root id="archive" name="informeHotel.jar">
+      <element id="directory" name="es">
+        <element id="directory" name="ciudadescolar">
+          <element id="directory" name="hotelreserva">
+            <element id="file-copy" path="$PROJECT_DIR$/target/classes/es/ciudadescolar/hotelreserva/Habitacion.class" />
+            <element id="file-copy" path="$PROJECT_DIR$/target/classes/es/ciudadescolar/hotelreserva/Reserva.class" />
+          </element>
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
